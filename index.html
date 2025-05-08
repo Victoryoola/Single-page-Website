@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playwrite+DK+Loopet:wght@100..400&family=Style+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>TourSpeak Tourism</title>
+  </head>
+  <body>
+    <div class="nav-bar">
+      <div>
+        <img src="img/logo.png" alt="tourpeak-logo" class="logo" />
+      </div>
+      <div>
+        <h1 class="style-script-regular">Travel Agency</h1>
+      </div>
+      <div class="search">
+        <input type="text" id="search-bar" placeholder="Search" />
+      </div>
+      <div class="links">
+        <ul>
+          <li><a href="" class="active">Home</a></li>
+          <li><a href="">About Us</a></li>
+          <li><a href="">Discover</a></li>
+          <li><a href="">Trips</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr />
+    <div class="container">
+      <div>
+        <div>
+          <h2>Discover The World</h2>
+          <p>
+            Your Passport to unforgettable journeys, hidden gems and local
+            stories
+          </p>
+        </div>
+        <br />
+        <div>
+          <h2>About Us</h2>
+          <p>
+            <em style="font-size: 23px"
+              >We Don't Just Book Trips - We Craft Experiences</em
+            >
+          </p>
+          <p style="font-size: 15px">
+            At TourSpeak, we believe every traveler has a story to tell
+          </p>
+          <p style="font-size: 15px">
+            Whether you're chasing sunsets, savoring new flavors, or
+          </p>
+          <p style="font-size: 15px">
+            stepping off the beaten path, we're here to turn your travel dreams
+          </p>
+          <p style="font-size: 15px">into reality.</p>
+        </div>
+        <div>
+          <button>Start Your Adventure</button>
+          <button style="margin-left: 40px">Explore Destinations</button>
+        </div>
+      </div>
+      <div class="slider-container">
+        <div class="slider-track" id="sliderTrack">
+          <img src="img/cliffs-1866832_1920.jpg" alt="image 1" />
+          <img src="img/dorset-9141987_1920.jpg" alt="image 2" />
+          <img src="img/hill-5324149_1920.jpg" alt="image 3" />
+          <img src="img/lighthouse-7306839_1920.jpg" alt="image 4" />
+          <img src="img/path-6514885_1920.jpg" alt="image 5" />
+          <img src="img/pexels-eberhardgross-2437299.jpg" alt="image 6" />
+          <img src="img/pexels-mdx014-814499.jpg" alt="image 7" />
+          <img src="img/pexels-peng-lim-6377-910368.jpg" alt="image 8" />
+          <img src="img/pexels-pixabay-247599.jpg" alt="image 9" />
+          <img src="img/pexels-riciardus-789380.jpg" alt="image 10" />
+          <img src="img/railway-2818748_1920.jpg" alt="image 11" />
+        </div>
+        <div class="slider-dots" id="sliderDots"></div>
+      </div>
+    </div>
+    <script>
+      const track = document.getElementById("sliderTrack");
+      const dotsContainer = document.getElementById("sliderDots");
+      const images = track.querySelectorAll("img");
+      let currentIndex = 0;
+
+      // Create navigation dots
+      images.forEach((_, index) => {
+        const dot = document.createElement("span");
+        dot.classList.add("dot");
+        if (index === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+      });
+
+      const dots = document.querySelectorAll(".slider-dots .dot");
+
+      function goToSlide(index) {
+        currentIndex = index;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot) => dot.classList.remove("active"));
+        dots[index].classList.add("active");
+      }
+
+      function autoSlide() {
+        currentIndex = (currentIndex + 1) % images.length;
+        goToSlide(currentIndex);
+      }
+
+      setInterval(autoSlide, 4000);
+    </script>
+  </body>
+</html>
